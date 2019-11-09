@@ -17,6 +17,16 @@ class ExtendedEuclidean {
 	    }
 	}
 	
+	public static int modInverse(int a, int mod) {
+		a = a % mod;
+		for (int i = 1; i < mod; i++) {
+			if ((a * i) % mod == 1) {
+				return i;
+			}
+		}
+		return 1;
+	}
+	
 	public static int[] extendedEuclidean(int a, int b, int s, int t) {
 	    if (a == 0) {
 	        return new int[] {b, 0, 1};
@@ -62,7 +72,10 @@ class ExtendedEuclidean {
 		System.out.println("gcd(1082, 309):\t" + gcd(1082, 309));
 		System.out.println(egcd(19743119, 647783, 1, 1));
 		System.out.println(egcd(45, 15, 1, 1));
+		System.out.println(egcd(92400, 3696, 1, 1));
 		System.out.println("-------------------------------------------------------");
 		System.out.println("lcm(1769, 550):\t" + lcm(1769, 550));
+		System.out.println("modInverse(1234, 4321): " + modInverse(1234, 4321));
+		System.out.println("modInverse(1769, 550): " + modInverse(1769, 550));
 	}
 }

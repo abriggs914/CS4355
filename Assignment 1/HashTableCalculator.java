@@ -22,11 +22,11 @@ class HashTableCalculator {
     }
     
     public static int partA(int r, int c) {
-        return c + (r % 11);
+        return (c + r) % 11;
     }
     
     public static int partB(int r, int c) {
-        return c * (r % 11);
+        return (c * r) % 11;
     }
     
     public static void printArr(int[][] arr) {
