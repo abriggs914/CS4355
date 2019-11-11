@@ -112,7 +112,7 @@ public class Model {
     BigInteger calculateD() {
         BigInteger x = phiN;
         try {
-            x = Main.model.modInverse(e, phiN);
+            x = modInverse(e, phiN);
             Main.controller.eIsNormal();
             return x;
         }
