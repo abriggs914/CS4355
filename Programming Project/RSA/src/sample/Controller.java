@@ -31,16 +31,6 @@ public class Controller {
     @FXML public Label generatePrimesLabel1;
     @FXML public Label generatePrimesLabel2;
 
-//    //
-//    @FXML public String pResultCurrText;
-//    @FXML public String qResultCurrText;
-//    @FXML public String cResultCurrText;
-//    @FXML public String m2ResultCurrText;
-//    @FXML public String m1ResultCurrText;
-//    @FXML public String dResultCurrText;
-//    @FXML public String nResultCurrText;
-//    @FXML public String eResultCurrText;
-
     // Interaction buttons
     @FXML public Button generatePrimesButton;
     @FXML public Button computeNButton;

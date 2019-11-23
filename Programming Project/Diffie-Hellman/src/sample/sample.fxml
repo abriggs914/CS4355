@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" prefHeight="335.0" prefWidth="508.0"
+          vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea"
+          fx:controller="sample.Controller">
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+    <Pane prefHeight="356.0" prefWidth="450.0">
+        <Label id="#pAndGLabel" fx:id="pAndGLabel" layoutX="-1.0" prefWidth="382.0"
+               text="0.  Given a large prime p = 65537, a primary root g = 3;"/>
+        <Label id="#xEqualsLabel" layoutX="37.0" layoutY="44.0" text="x =" fx:id="xEqualsLabel"/>
+        <Label id="#chooseRandomXLabel" fx:id="chooseRandomXLabel" layoutX="2.0" layoutY="23.0" prefHeight="17.0"
+               prefWidth="183.0" text="1.  Choose a random number x"/>
+        <Label id="#ComputeXLabel" fx:id="ComputeXLabel" layoutX="-1.0" layoutY="79.0"
+               text="2.  Compute X = g^x mod p"/>
+        <Label id="#XEqualsLabel" fx:id="XEqualsLabel" layoutX="37.0" layoutY="111.0" text="X ="/>
+        <Label id="#chooseRandomYLabel" fx:id="chooseRandomYLabel" layoutY="132.0" text="3.  Choose a random number y"/>
+        <Label id="#computeYLabel" fx:id="computeYLabel" layoutX="-1.0" layoutY="191.0"
+               text="4.  Compute Y = g^y mod p"/>
+        <Label id="#calcSessionKeyLabel" fx:id="calcSessionKeyLabel" layoutX="-1.0" layoutY="242.0"
+               text="5. Calculate the session key K = g^(xy) mod p"/>
+        <Label id="#k1EqualsLabel" fx:id="k1EqualsLabel" layoutX="14.0" layoutY="278.0" text="K = Y^x mod p"/>
+        <Label id="#inputMEqualsLabel" fx:id="inputMEqualsLabel" layoutX="35.0" layoutY="160.0" text="y ="/>
+        <Label id="#YEqualsLabel" fx:id="c1EqualsLabel" layoutX="32.0" layoutY="221.0" text="Y ="/>
+        <Label id="#k2EqualsLabel" fx:id="k2EqualsLabel" layoutX="240.0" layoutY="278.0" text="K = X^y mod p"/>
+
+        <TextField id="#xEqualsResultTextField" layoutX="59.0" layoutY="40.0" prefHeight="25.0" prefWidth="382.0"
+                   fx:id="xEqualsResultTextField"/>
+        <TextField id="#XEqualsResultTextField" fx:id="XEqualsResultTextField" layoutX="59.0" layoutY="107.0"
+                   prefHeight="25.0" prefWidth="382.0"/>
+        <TextField id="#yEqualsTextField" fx:id="yEqualsTextField" layoutX="59.0" layoutY="156.0" prefHeight="25.0"
+                   prefWidth="382.0"/>
+        <TextField id="#YEqualsResultTextField" fx:id="YEqualsResultTextField" layoutX="59.0" layoutY="217.0"
+                   prefHeight="25.0" prefWidth="382.0"/>
+        <TextField id="#k1EqualsTextField" fx:id="c2EqualsResultTextField" layoutX="21.0" layoutY="308.0"
+                   prefHeight="25.0" prefWidth="176.0"/>
+        <TextField id="#k2EqualsTextField" fx:id="mDecryptResultTextField" layoutX="250.0" layoutY="308.0"
+                   prefHeight="25.0" prefWidth="176.0"/>
+
+        <Button id="#ComputeXButton" fx:id="ComputeXButton" layoutX="164.0" layoutY="75.0" mnemonicParsing="false"
+                onMouseClicked="#computeXButtonClicked" text="Com"/>
+        <Button id="#computeYButton" fx:id="computeYButton" layoutX="164.0" layoutY="187.0" mnemonicParsing="false"
+                onMouseClicked="#computeYButtonClicked" text="Com"/>
+        <Button id="#calcK1Button" fx:id="calcK1Button" layoutX="109.0" layoutY="274.0" mnemonicParsing="false"
+                onMouseClicked="#calcK1ButtonClicked" text="Cal"/>
+        <Button id="#calcK2Button" fx:id="calcK2Button" layoutX="338.0" layoutY="274.0" mnemonicParsing="false"
+              onMouseClicked="#calcK2ButtonClicked" text="Cal"/>
+    </Pane>
+</GridPane>
