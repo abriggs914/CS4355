@@ -6,17 +6,20 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public View view;
-    public Model model;
+    public static View view;
+    public static Model model;
+    public static Controller controller;
 
     @Override
     public void start(Stage primaryStage) {
 
+        controller = new Controller();
         view = new View();
         model = new Model();
+        controller.init();
 
         primaryStage.setTitle("Diffie-Hellman Key Exchange");
-        primaryStage.setScene(new Scene(view, 500, 375));
+        primaryStage.setScene(new Scene(view, 505, 375));
         primaryStage.setResizable(false);
         primaryStage.show();
     }
