@@ -2,7 +2,7 @@ package sample;
 
 import java.math.BigInteger;
 
-public class Model {
+public class ElGamalEncryption {
 
     private BigInteger p;
     private BigInteger g;
@@ -14,35 +14,30 @@ public class Model {
     private BigInteger c2;
     private BigInteger m2;
 
-    private ElGamalEncryption elgamal;
-
-    Model() {
-        this.p = toBigInteger(65537);
-        this.g = toBigInteger(3);
-
-//        this.p = toBigInteger(17);
-//        this.g = toBigInteger(6);
-        this.elgamal = new ElGamalEncryption(p, g);
+    ElGamalEncryption(BigInteger p, BigInteger g) {
+        this.p = p;
+        this.g = g;
     }
 
-    public String computePublicKeyY() {
-        return this.elgamal.computeY().toString();
+    public BigInteger computeY() {
+        this.y = g.pow(x.intValue()).mod(p);
+        return y;
     }
 
-    public String computeC1() {
-        return this.elgamal.computeC1().toString();
+    public BigInteger computeC1() {
+        this.c1 = g.pow(r.intValue()).mod(p);
+        return c1;
     }
 
-    public String computeC2() {
-        return this.elgamal.computeC2().toString();
+    public BigInteger computeC2() {
+        this.c2 = m1.multiply(y.pow(r.intValue())).mod(p);
+        return c2;
     }
 
-    public String decrypt() {
-        return this.elgamal.decrypt().toString();
-    }
-
-    BigInteger toBigInteger(int x) {
-        return new BigInteger(Integer.toString(x));
+    public BigInteger decrypt() {
+        BigInteger gamma = c1.pow(x.intValue()).modInverse(p);
+        this.m2 = c2.multiply(gamma).mod(p);
+        return m2;
     }
 
     public BigInteger getP() {
@@ -67,7 +62,6 @@ public class Model {
 
     public void setX(BigInteger x) {
         this.x = x;
-        this.elgamal.setX(this.x);
     }
 
     public BigInteger getY() {
@@ -84,7 +78,6 @@ public class Model {
 
     public void setM1(BigInteger m1) {
         this.m1 = m1;
-        this.elgamal.setM1(this.m1);
     }
 
     public BigInteger getR() {
@@ -93,7 +86,6 @@ public class Model {
 
     public void setR(BigInteger r) {
         this.r = r;
-        this.elgamal.setR(this.r);
     }
 
     public BigInteger getC1() {

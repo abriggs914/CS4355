@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public View view;
+    public static View view;
     public static Model model;
     public static Controller controller;
 
@@ -20,7 +20,7 @@ public class Main extends Application {
         controller.init();
 
         primaryStage.setTitle("ElGamal Encryption/Decryption");
-        primaryStage.setScene(new Scene(view, 500, 375));
+        primaryStage.setScene(new Scene(view, 500, 350));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

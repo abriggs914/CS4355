@@ -15,34 +15,34 @@
     <rowConstraints>
         <RowConstraints />
     </rowConstraints>
-    <Pane prefHeight="356.0" prefWidth="450.0">
-        <Label id="#pAndGLabel" fx:id="pAndGLabel" layoutX="-1.0" prefWidth="382.0" text="0.  Given a large prime p = 65537, a primary root g = 3;" />
+    <Pane prefHeight="335.0" prefWidth="475.0">
+        <Label id="#pAndGLabel" fx:id="pAndGLabel" layoutX="2.0" prefWidth="382.0" text="0.  Given a large prime p = 65537, a primary root g = 3;" />
         <Label id="#xEqualsLabel" layoutX="156.0" layoutY="23.0" text="x =" fx:id="xEqualsLabel" />
         <Label id="#choosePrivateKeyLabel" fx:id="choosePrivateKeyLabel" layoutX="2.0" layoutY="23.0" prefHeight="17.0" prefWidth="142.0" text="1.  Choose a private key x" />
         <Label id="#ComputeYLabel" fx:id="ComputeYLabel" layoutX="2.0" layoutY="58.0" text="2.  Compute the corresponding public key y = g^x mod p" />
-        <Label id="#yEqualsLabel" fx:id="yEqualsLabel" layoutX="37.0" layoutY="81.0" text="y =" />
-        <Label id="#inputMLabel" fx:id="inputMLabel" layoutY="119.0" text="3.  Input a message m" />
-        <Label id="#encryptLabel" fx:id="encryptLabel" layoutY="142.0" text="4.  Encrypt" />
-        <Label id="#chooseRandomRLabel" fx:id="chooseRandomRLabel" layoutX="21.0" layoutY="168.0" text="4.1  Choose a random number r" />
-        <Label id="#computeC1Label" fx:id="computeC1Label" layoutX="14.0" layoutY="203.0" text="4.2  Compute c1 = g^r mod p" />
-        <Label id="#computeC2Label" fx:id="computeC2Label" layoutX="17.0" layoutY="242.0" text="4.3 Compute c2 = m * y^r mod p" />
+        <Label id="#yEqualsLabel" fx:id="yEqualsLabel" layoutX="37.0" layoutY="90.0" text="y =" />
+        <Label id="#inputMLabel" fx:id="inputMLabel" layoutX="2.0" layoutY="119.0" text="3.  Input a message m" />
+        <Label id="#encryptLabel" fx:id="encryptLabel" layoutX="2.0" layoutY="142.0" text="4.  Encrypt" />
+        <Label id="#chooseRandomRLabel" fx:id="chooseRandomRLabel" layoutX="19.0" layoutY="168.0" text="4.1  Choose a random number r" />
+        <Label id="#computeC1Label" fx:id="computeC1Label" layoutX="19.0" layoutY="203.0" text="4.2  Compute c1 = g^r mod p" />
+        <Label id="#computeC2Label" fx:id="computeC2Label" layoutX="19.0" layoutY="242.0" text="4.3 Compute c2 = m * y^r mod p" />
         <Label id="#decryptLabel" fx:id="decryptLabel" layoutX="-2.0" layoutY="278.0" text="5.  Decrypt C = (c1, c2)" />
         <Label id="#mDecrpytLabel" fx:id="mDecrpytLabel" layoutX="46.0" layoutY="299.0" text="m = c2 / (c1)^x mod p" />
-        <TextField id="#xEqualsResultTextField" layoutX="190.0" layoutY="19.0" fx:id="xEqualsResultTextField" />
-        <TextField id="#yEqualsResultTextField" fx:id="yEqualsResultTextField" layoutX="59.0" layoutY="77.0" prefHeight="25.0" prefWidth="382.0" />
-        <TextField id="#inputMEqualsResultTextField" fx:id="inputMEqualsResultTextField" layoutX="190.0" layoutY="115.0" prefHeight="25.0" prefWidth="249.0" />
-        <TextField id="#rEqualsResultTextField" fx:id="rEqualsResultTextField" layoutX="291.0" layoutY="164.0" />
-        <TextField id="#c1EqualsResultTextField" fx:id="c1EqualsResultTextField" layoutX="291.0" layoutY="199.0" />
-        <TextField id="#c2EqualsResultTextField" fx:id="c2EqualsResultTextField" layoutX="291.0" layoutY="238.0" />
-        <TextField id="#mDecryptResultTextField" fx:id="mDecryptResultTextField" layoutX="291.0" layoutY="295.0" />
-        <Button id="#ComputeYButton" fx:id="ComputeYButton" layoutX="314.0" layoutY="54.0" mnemonicParsing="false" text="Com" onMouseClicked="#computYButtonClicked"/>
-        <Button id="#computec1Button" fx:id="computec1Button" layoutX="207.0" layoutY="199.0" mnemonicParsing="false" text="Com" onMouseClicked="#computeC1ButtonClicked"/>
-        <Button id="#computec2Button" fx:id="computec2Button" layoutX="207.0" layoutY="238.0" mnemonicParsing="false" text="Com" onMouseClicked="#computeC2ButtonClicked"/>
-        <Button id="#decryptButton" fx:id="decryptButton" layoutX="207.0" layoutY="295.0" mnemonicParsing="false" text="Dec" onMouseClicked="#decryptButtonClicked"/>
-        <Label id="#inputMEqualsLabel" fx:id="inputMEqualsLabel" layoutX="154.0" layoutY="119.0" text="m =" />
-        <Label id="#rEqualsLabel" fx:id="rEqualsLabel" layoutX="250.0" layoutY="168.0" text="r =" />
-        <Label id="#c1EqualsLabel" fx:id="c1EqualsLabel" layoutX="266.0" layoutY="203.0" text="c1 =" />
+        <TextField id="#xEqualsResultTextField" layoutX="190.0" layoutY="19.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="268.0" promptText="x" fx:id="xEqualsResultTextField" />
+        <TextField id="#yEqualsResultTextField" fx:id="yEqualsResultTextField" layoutX="64.0" layoutY="86.0" prefHeight="25.0" prefWidth="400.0" promptText="compute y using x" />
+        <TextField id="#inputMEqualsResultTextField" fx:id="inputMEqualsResultTextField" layoutX="190.0" layoutY="124.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="268.0" promptText="m" />
+        <TextField id="#rEqualsResultTextField" fx:id="rEqualsResultTextField" layoutX="291.0" layoutY="164.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="168.0" promptText="r" />
+        <TextField id="#c1EqualsResultTextField" fx:id="c1EqualsResultTextField" layoutX="291.0" layoutY="199.0" prefHeight="25.0" prefWidth="168.0" promptText="compute c1 using r" />
+        <TextField id="#c2EqualsResultTextField" fx:id="c2EqualsResultTextField" layoutX="291.0" layoutY="238.0" prefHeight="25.0" prefWidth="168.0" promptText="compute c2 using y and r" />
+        <TextField id="#mDecryptResultTextField" fx:id="mDecryptResultTextField" layoutX="291.0" layoutY="295.0" prefHeight="25.0" prefWidth="168.0" promptText="decrypt m using c1 &amp; c2" />
+        <Button id="#ComputeYButton" fx:id="ComputeYButton" layoutX="314.0" layoutY="54.0" mnemonicParsing="false" onMouseClicked="#computeYButtonClicked" text="Com" />
+        <Button id="#computec1Button" fx:id="computeC1Button" layoutX="207.0" layoutY="199.0" mnemonicParsing="false" onMouseClicked="#computeC1ButtonClicked" text="Com" />
+        <Button id="#computec2Button" fx:id="computeC2Button" layoutX="207.0" layoutY="238.0" mnemonicParsing="false" onMouseClicked="#computeC2ButtonClicked" text="Com" />
+        <Button id="#decryptButton" fx:id="decryptButton" layoutX="207.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#decryptButtonClicked" text="Dec" />
+        <Label id="#inputMEqualsLabel" fx:id="inputMEqualsLabel" layoutX="154.0" layoutY="128.0" text="m =" />
+        <Label id="#rEqualsLabel" fx:id="rEqualsLabel" layoutX="264.0" layoutY="168.0" text="r =" />
+        <Label id="#c1EqualsLabel" fx:id="c1EqualsLabel" layoutX="264.0" layoutY="203.0" text="c1 =" />
         <Label id="#c1EqualsLabel" fx:id="c2EqualsLabel" layoutX="264.0" layoutY="242.0" text="c2 =" />
-        <Label id="#mDecryptEqualsLabel" fx:id="mDecryptEqualsLabel" layoutX="262.0" layoutY="299.0" text="m =" />
+        <Label id="#mDecryptEqualsLabel" fx:id="mDecryptEqualsLabel" layoutX="264.0" layoutY="299.0" text="m =" />
     </Pane>
 </GridPane>
