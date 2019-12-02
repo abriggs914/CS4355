@@ -8,52 +8,44 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" prefHeight="335.0" prefWidth="508.0" vgap="10"
-          xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="sample.Controller">
+<GridPane alignment="center" hgap="10" prefHeight="385.0" prefWidth="508.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <columnConstraints>
-      <ColumnConstraints/>
+      <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints/>
+      <RowConstraints />
    </rowConstraints>
-   <Pane prefHeight="356.0" prefWidth="382.0">
-      <TextField fx:id="pEqualsResultTextField" id="#pEqualsResultTextField" layoutX="41.0" layoutY="37.0" prefHeight="25.0" prefWidth="333.0"
-                 promptText="p"/>
-      <Label fx:id="pEqualsLabel" layoutX="18.0" layoutY="41.0" text="p ="/>
-      <Label fx:id="qEqualsLabel" layoutX="18.0" layoutY="66.0" text="q ="/>
-      <TextField fx:id="qEqualsResultTextField" id="#qEqualsResultTextField" layoutX="41.0" layoutY="62.0" prefHeight="25.0" prefWidth="333.0"
-                 promptText="q"/>
-      <Label fx:id="generatePrimesLabel1" layoutX="13.0" layoutY="14.0" text="1. Generate primes p and q"/>
-      <Label fx:id="generatePrimesLabel2" layoutX="222.0" layoutY="14.0" text="( 1000 &lt; p, q &lt; 5000 )"/>
-      <Label fx:id="computeNLabel" layoutX="13.0" layoutY="96.0" text="2. Compute n=pq"/>
-      <Label fx:id="setPublicKeyELabel" layoutX="12.0" layoutY="159.0" text="3. Set a public key e"/>
-      <Label fx:id="calculatePrivateKeyDLabel" layoutX="11.0" layoutY="187.0" text="4. Calculate the private key d"/>
-      <Label fx:id="inputStringLabel" layoutX="12.0" layoutY="246.0" text="5. Input a message m"/>
-      <Label fx:id="encryptCLabel" layoutX="12.0" layoutY="275.0" text="6. Encrypt c=m^e mod n"/>
-      <Label fx:id="decryptMLabel" layoutX="13.0" layoutY="304.0" text="7. Decrypt m=c^d mod n"/>
-      <Button fx:id="generatePrimesButton" layoutX="170.0" layoutY="10.0" mnemonicParsing="false" text="Gen"
-              onMouseClicked="#genPrimesButtonClicked"/>
-      <Button fx:id="computeNButton" layoutX="118.0" layoutY="92.0" mnemonicParsing="false" text="Com"
-              onMouseClicked="#computeNButtonClicked"/>
-      <Button fx:id="calculateDButton" layoutX="176.0" layoutY="183.0" mnemonicParsing="false" text="Cal"
-              onMouseClicked="#calculateDButtonClicked"/>
-      <Button fx:id="encryptButton" layoutX="157.0" layoutY="270.0" mnemonicParsing="false" text="Enc"
-              onMouseClicked="#encryptButtonClicked"/>
-      <Button fx:id="decryptButton" layoutX="156.0" layoutY="300.0" mnemonicParsing="false" text="Dec"
-              onMouseClicked="#decryptButtonClicked"/>
-      <TextField fx:id="cEqualsResultTextField" id="#cEqualsResultTextField" layoutX="228.0" layoutY="271.0"/>
-      <Label fx:id="cEqualsLabel" layoutX="206.0" layoutY="274.0" text="c ="/>
-      <Label fx:id="mEqualsLabel2" layoutX="204.0" layoutY="304.0" text="m ="/>
-      <Label fx:id="mEqualsLabel1" layoutX="204.0" layoutY="246.0" text="m ="/>
-      <TextField fx:id="mEqualsResultTextField1" id="#mEqualsResultTextField1" layoutX="228.0" layoutY="242.0"/>
-      <TextField fx:id="mEqualsResultTextField2" id="#mEqualsResultTextField2" layoutX="228.0" layoutY="302.0"/>
-      <Label fx:id="dEqualsLabel" layoutX="41.0" layoutY="216.0" text="d ="/>
-      <Label fx:id="eEqualsLabel" layoutX="135.0" layoutY="159.0" text="e ="/>
-      <Label fx:id="nEqualsLabel" layoutX="41.0" layoutY="126.0" text="n ="/>
-      <TextField fx:id="dEqualsResultTextField" id="#dEqualsResultTextField" layoutX="64.0" layoutY="212.0" prefHeight="25.0" prefWidth="311.0"/>
-      <TextField fx:id="nEqualsResultTextField" id="#nEqualsResultTextField" layoutX="71.0" layoutY="122.0" prefHeight="25.0" prefWidth="304.0"/>
-      <TextField fx:id="eEqualsResultTextField" id="#eEqualsResultTextField" layoutX="166.0" layoutY="155.0" prefHeight="25.0" prefWidth="210.0"
-                 promptText="enter a key" onKeyReleased="#textChanged"/>
+   <Pane prefHeight="379.0" prefWidth="419.0">
+      <TextField id="#pEqualsResultTextField" fx:id="pEqualsResultTextField" layoutX="41.0" layoutY="37.0" prefHeight="25.0" prefWidth="333.0" promptText="p" />
+      <Label fx:id="pEqualsLabel" layoutX="18.0" layoutY="41.0" text="p =" />
+      <Label fx:id="qEqualsLabel" layoutX="18.0" layoutY="66.0" text="q =" />
+      <TextField id="#qEqualsResultTextField" fx:id="qEqualsResultTextField" layoutX="41.0" layoutY="62.0" prefHeight="25.0" prefWidth="333.0" promptText="q" />
+      <Label fx:id="generatePrimesLabel1" layoutX="13.0" layoutY="14.0" text="1. Generate primes p and q" />
+      <Label fx:id="generatePrimesLabel2" layoutX="222.0" layoutY="14.0" text="( 1000 &lt; p, q &lt; 5000 )" />
+      <Label fx:id="computeNLabel" layoutX="13.0" layoutY="96.0" text="2. Compute n=pq" />
+      <Label fx:id="setPublicKeyELabel" layoutX="12.0" layoutY="159.0" text="3. Set a public key e" />
+      <Label fx:id="calculatePrivateKeyDLabel" layoutX="11.0" layoutY="187.0" text="4. Calculate the private key d" />
+      <Label fx:id="inputStringLabel" layoutX="12.0" layoutY="246.0" text="5. Input a message m" />
+      <Label fx:id="encryptCLabel" layoutX="12.0" layoutY="275.0" text="6. Encrypt c=m^e mod n" />
+      <Label fx:id="decryptMLabel" layoutX="13.0" layoutY="304.0" text="7. Decrypt m=c^d mod n" />
+      <Button fx:id="generatePrimesButton" layoutX="170.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#genPrimesButtonClicked" text="Gen" />
+      <Button fx:id="computeNButton" layoutX="118.0" layoutY="92.0" mnemonicParsing="false" onMouseClicked="#computeNButtonClicked" text="Com" />
+      <Button fx:id="calculateDButton" layoutX="176.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#calculateDButtonClicked" text="Cal" />
+      <Button fx:id="encryptButton" layoutX="157.0" layoutY="270.0" mnemonicParsing="false" onMouseClicked="#encryptButtonClicked" text="Enc" />
+      <Button fx:id="decryptButton" layoutX="156.0" layoutY="300.0" mnemonicParsing="false" onMouseClicked="#decryptButtonClicked" text="Dec" />
+      <TextField id="#cEqualsResultTextField" fx:id="cEqualsResultTextField" layoutX="228.0" layoutY="271.0" promptText="encrypt m using e &amp; n" />
+      <Label fx:id="cEqualsLabel" layoutX="206.0" layoutY="274.0" text="c =" />
+      <Label fx:id="mEqualsLabel2" layoutX="204.0" layoutY="304.0" text="m =" />
+      <Label fx:id="mEqualsLabel1" layoutX="204.0" layoutY="246.0" text="m =" />
+      <TextField id="#mEqualsResultTextField1" fx:id="mEqualsResultTextField1" layoutX="228.0" layoutY="242.0" promptText="m" />
+      <TextField id="#mEqualsResultTextField2" fx:id="mEqualsResultTextField2" layoutX="228.0" layoutY="302.0" promptText="decrypt m using c, d, &amp; n" />
+      <Label fx:id="dEqualsLabel" layoutX="41.0" layoutY="216.0" text="d =" />
+      <Label fx:id="eEqualsLabel" layoutX="135.0" layoutY="159.0" text="e =" />
+      <Label fx:id="nEqualsLabel" layoutX="41.0" layoutY="126.0" text="n =" />
+      <TextField id="#dEqualsResultTextField" fx:id="dEqualsResultTextField" layoutX="64.0" layoutY="212.0" prefHeight="25.0" prefWidth="311.0" promptText="calculate d using p, q, &amp; e" />
+      <TextField id="#nEqualsResultTextField" fx:id="nEqualsResultTextField" layoutX="71.0" layoutY="122.0" prefHeight="25.0" prefWidth="304.0" promptText="compute n using p &amp; q" />
+      <TextField id="#eEqualsResultTextField" fx:id="eEqualsResultTextField" layoutX="166.0" layoutY="155.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="210.0" promptText="enter a key" />
+      <Button id="#resetButton" fx:id="resetButton" layoutX="215.0" layoutY="343.0" mnemonicParsing="false" text="reset" onMouseClicked="#resetFields" />
+      <Label id="#resetFieldsLabel" fx:id="resetFieldsLabel" layoutX="133.0" layoutY="347.0" text="Reset fields :" />
    </Pane>
 </GridPane>

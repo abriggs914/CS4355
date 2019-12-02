@@ -8,8 +8,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
-import java.lang.reflect.Array;
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class Controller {
 
@@ -30,6 +32,7 @@ public class Controller {
     @FXML public Label qEqualsLabel;
     @FXML public Label generatePrimesLabel1;
     @FXML public Label generatePrimesLabel2;
+    @FXML public Label resetFieldsLabel;
 
     // Interaction buttons
     @FXML public Button generatePrimesButton;
@@ -37,6 +40,7 @@ public class Controller {
     @FXML public Button calculateDButton;
     @FXML public Button encryptButton;
     @FXML public Button decryptButton;
+    @FXML public Button resetButton;
 
     // Results reporting windows
     @FXML public TextField pEqualsResultTextField;
@@ -121,14 +125,23 @@ public class Controller {
         }
     }
 
+    private final Charset UTF_8 = Charset.forName("UTF-8");
+
     public void encryptButtonClicked(MouseEvent mouseEvent) {
         System.out.println("encrypt message button clicked");
         String m1CurrText = mEqualsResultTextField1.getText();
-        if (checkInt(m1CurrText)) {
-            BigInteger m1 = new BigInteger(Integer.toString(Integer.parseInt(m1CurrText)));
+        if (m1CurrText.length() > 0) {
+            BigInteger m1;
+            if (checkInt(m1CurrText)) {
+                m1 = new BigInteger(m1CurrText);
+            }
+            else{
+                m1 = stringToBigInteger(m1CurrText);
+            }
+
             BigInteger encM1 = Main.model.encrypt(m1);
+            System.out.println("encM1: " + encM1);
             Main.model.setC(encM1);
-            m1IsNormal();
             cEqualsResultTextField.setText(encM1.toString());
         }
         else {
@@ -136,18 +149,81 @@ public class Controller {
         }
     }
 
+    public BigInteger stringToBigInteger(String num) {
+        byte[] bA = num.getBytes(UTF_8);
+        StringBuilder number = new StringBuilder();
+        boolean first = true;
+        for (Byte b : bA) {
+            StringBuilder s = new StringBuilder(Integer.toBinaryString(b));
+            for (int i = 8; i - s.length() >= 0; i--) {
+                if (!first) {
+                    s.insert(0, "0");
+                }
+                first = false;
+            }
+//            System.out.println("\ts: " + s);
+            number.append(s);
+        }
+        System.out.println("number: {" + number + "}");
+        return binaryToBigInteger(number.toString());
+    }
+
+    public BigInteger binaryToBigInteger(String number) {
+        BigInteger res = BigInteger.ZERO;
+        int power = number.length() - 1;
+        for (int i = 0; i < number.length(); i++){
+            int val = number.charAt(i) - 48;
+//            System.out.println("val: " + val);
+            if (val == 1) {
+                BigInteger toAdd = new BigInteger(Integer.toString(val));
+                toAdd = new BigInteger("2").pow(power - i);
+                res = res.add(toAdd);
+            }
+        }
+        System.out.println("decimal number: " + res);
+        return res;
+    }
+
     public void decryptButtonClicked(MouseEvent mouseEvent) {
         System.out.println("decrypt message button clicked");
 
         String cCurrText = cEqualsResultTextField.getText();
         if (checkInt(cCurrText)) {
+            mEqualsResultTextField2.setText("processing... this may take a moment.");
             BigInteger decC = Main.model.decrypt();
             cIsNormal();
-            mEqualsResultTextField2.setText(decC.toString());
+            if (checkInt(mEqualsResultTextField1.getText())) {
+                mEqualsResultTextField2.setText(decC.toString());
+            }
+            else {
+                mEqualsResultTextField2.setText(bigIntegerToString(decC));
+            }
         }
         else {
             cNeedsToBeSelected();
         }
+        System.out.println("decrypt handled.");
+    }
+
+    private String bigIntegerToString(BigInteger decC) {
+        String binary = decC.toString(2);
+        String res = null;
+        res = new String(decC.toString().getBytes(), 0, decC.toString().length(), StandardCharsets.US_ASCII);
+        char nextChar;
+        System.out.println("binaryA: " + binary);
+        for (int i = 0; i + binary.length() < 8; i++) {
+            binary = "0" + binary;
+        }
+        System.out.println("binaryB: " + binary);
+
+        StringBuilder decrypted = new StringBuilder();
+        for(int i = 0; i <= binary.length()-8; i += 9) {
+            nextChar = (char)Integer.parseInt(binary.substring(i, i+8), 2);
+            decrypted.append(nextChar);
+        }
+        System.out.println("bigIntegerToString: " + res);
+        System.out.println("decrypted: " + decrypted);
+        return decrypted.toString();
     }
 
     private boolean checkInt(String text) {
@@ -193,67 +269,66 @@ public class Controller {
     }
 
     private void pNeedsToBeSelected() {
-        System.out.println("pNeedsToBeSelected:");
+//        System.out.println("pNeedsToBeSelected:");
         pEqualsResultTextField.setStyle("-fx-control-inner-background: #FFAAAA;");
     }
 
     private void pIsNormal() {
-        System.out.println("pIsNormal:");
+//        System.out.println("pIsNormal:");
         pEqualsResultTextField.setStyle("-fx-control-inner-background: white;");
     }
 
     private void qNeedsToBeSelected() {
-        System.out.println("qNeedsToBeSelected:");
+//        System.out.println("qNeedsToBeSelected:");
         qEqualsResultTextField.setStyle("-fx-control-inner-background: #FFAAAA;");
     }
 
     private void qIsNormal() {
-        System.out.println("qIsNormal:");
+//        System.out.println("qIsNormal:");
         qEqualsResultTextField.setStyle("-fx-control-inner-background: white;");
     }
 
     private void m1NeedsToBeSelected() {
-        System.out.println("m1NeedsToBeSelected:");
+//        System.out.println("m1NeedsToBeSelected:");
         mEqualsResultTextField1.setStyle("-fx-control-inner-background: #FFAAAA;");
     }
 
     private void m1IsNormal() {
-        System.out.println("m1IsNormal:");
+//        System.out.println("m1IsNormal:");
         mEqualsResultTextField1.setStyle("-fx-control-inner-background: white;");
     }
 
     public static void eNeedsToBeSelected() {
-        System.out.println("eNeedsToBeSelected:");
+//        System.out.println("eNeedsToBeSelected:");
         eEqualsResultTextField.setStyle("-fx-control-inner-background: #FFAAAA;");
     }
 
     private void cNeedsToBeSelected() {
-        System.out.println("cNeedsToBeSelected:");
+//        System.out.println("cNeedsToBeSelected:");
         cEqualsResultTextField.setStyle("-fx-control-inner-background: #FFAAAA;");
     }
 
     private void cIsNormal() {
-        System.out.println("cIsNormal:");
+//        System.out.println("cIsNormal:");
         cEqualsResultTextField.setStyle("-fx-control-inner-background: white;");
     }
 
     public void eIsNormal() {
-        System.out.println("eIsNormal:");
+//        System.out.println("eIsNormal:");
         eEqualsResultTextField.setStyle("-fx-control-inner-background: white;");
     }
 
     private void nNeedsToBeSelected() {
-        System.out.println("nIsNormal:");
+//        System.out.println("nIsNormal:");
         nEqualsResultTextField.setStyle("-fx-control-inner-background: #FFAAAA;");
     }
 
     public void nIsNormal() {
-        System.out.println("nIsNormal:");
+//        System.out.println("nIsNormal:");
         nEqualsResultTextField.setStyle("-fx-control-inner-background: white;");
     }
 
     public void init() {
-        System.out.println("second");
         GridPane gp = (GridPane) Main.view.getChildren().get(0);
         pEqualsResultTextField = (TextField) gp.lookupAll("TextField").toArray()[0];
         qEqualsResultTextField = (TextField) gp.lookupAll("TextField").toArray()[1];
@@ -263,8 +338,23 @@ public class Controller {
         dEqualsResultTextField = (TextField) gp.lookupAll("TextField").toArray()[5];
         nEqualsResultTextField = (TextField) gp.lookupAll("TextField").toArray()[6];
         eEqualsResultTextField = (TextField) gp.lookupAll("TextField").toArray()[7];
-        System.out.println("\teEqualsResultTextField\n" + eEqualsResultTextField);
-        System.out.println("third");
-//        eEqualsResultTextField = new TextField();
+    }
+
+    public void resetFields(MouseEvent mouseEvent) {
+        System.out.println("CLEARING");
+        pEqualsResultTextField.clear();
+        qEqualsResultTextField.clear();
+        cEqualsResultTextField.clear();
+        mEqualsResultTextField1.clear();
+        mEqualsResultTextField2.clear();
+        dEqualsResultTextField.clear();
+        nEqualsResultTextField.clear();
+        eEqualsResultTextField.clear();
+        pIsNormal();
+        qIsNormal();
+        cIsNormal();
+        m1IsNormal();
+        nIsNormal();
+        eIsNormal();
     }
 }

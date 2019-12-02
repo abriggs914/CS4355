@@ -27,7 +27,7 @@ public class RSAEncryption {
         return m.pow(e.intValue()).mod(n);
     }
 
-    public BigInteger decrypt(BigInteger c, BigInteger d, BigInteger n) {
+    public synchronized BigInteger decrypt(BigInteger c, BigInteger d, BigInteger n) {
         return c.pow(d.intValue()).mod(n);
     }
 
@@ -45,7 +45,7 @@ public class RSAEncryption {
     }
 
     public boolean checkPrime(BigInteger n) {
-        return n.isProbablePrime(0);
+        return n.isProbablePrime(4);
     }
 
     public boolean checkPrime(int n) {

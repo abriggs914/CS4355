@@ -17,7 +17,7 @@ public class Main extends Application {
         view = new View();
         model = new Model();
         controller.init();
-        Scene scene = new Scene(view, 500, 375);
+        Scene scene = new Scene(view, 500, 400);
         primaryStage.setTitle("RSA Encryption/Decryption");
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
