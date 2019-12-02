@@ -8,7 +8,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
-import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -52,13 +51,7 @@ public class Controller {
     @FXML public TextField nEqualsResultTextField;
     @FXML public static TextField eEqualsResultTextField;
 
-//    Controller() {
-//        eEqualsResultTextField.textProperty().addListener(((observable, oldValue, newValue) -> {
-//            // assert that e is a valid number
-//            System.out.println("type: " + newValue.getClass());
-//            Main.model.setE(Integer.parseInt(newValue));
-//        }));
-//    }
+    private final Charset UTF_8 = Charset.forName("UTF-8");
 
     @FXML
     public void genPrimesButtonClicked(MouseEvent mouseEvent) {
@@ -82,7 +75,7 @@ public class Controller {
     }
 
     public void computeNButtonClicked(MouseEvent mouseEvent) {
-        System.out.println("compute n button clicked");
+//        System.out.println("compute n button clicked");
         BigInteger n = Main.model.computeN();
         BigInteger zero = new BigInteger("0");
         if (n.compareTo(zero) == 0) {
@@ -104,7 +97,7 @@ public class Controller {
     }
 
     public void calculateDButtonClicked(MouseEvent mouseEvent) {
-        System.out.println("calculate d button clicked");
+//        System.out.println("calculate d button clicked");
         BigInteger d = Main.model.calculateD();
         boolean greaterThanZero = d.compareTo(new BigInteger("0")) > 0;
         boolean eIsInt = checkInt(Main.model.getE().toString());
@@ -125,10 +118,8 @@ public class Controller {
         }
     }
 
-    private final Charset UTF_8 = Charset.forName("UTF-8");
-
     public void encryptButtonClicked(MouseEvent mouseEvent) {
-        System.out.println("encrypt message button clicked");
+//        System.out.println("encrypt message button clicked");
         String m1CurrText = mEqualsResultTextField1.getText();
         if (m1CurrText.length() > 0) {
             BigInteger m1;
@@ -140,7 +131,7 @@ public class Controller {
             }
 
             BigInteger encM1 = Main.model.encrypt(m1);
-            System.out.println("encM1: " + encM1);
+//            System.out.println("encM1: " + encM1);
             Main.model.setC(encM1);
             cEqualsResultTextField.setText(encM1.toString());
         }
@@ -164,7 +155,7 @@ public class Controller {
 //            System.out.println("\ts: " + s);
             number.append(s);
         }
-        System.out.println("number: {" + number + "}");
+//        System.out.println("number: {" + number + "}");
         return binaryToBigInteger(number.toString());
     }
 
@@ -180,16 +171,16 @@ public class Controller {
                 res = res.add(toAdd);
             }
         }
-        System.out.println("decimal number: " + res);
+//        System.out.println("decimal number: " + res);
         return res;
     }
 
     public void decryptButtonClicked(MouseEvent mouseEvent) {
-        System.out.println("decrypt message button clicked");
+//        System.out.println("decrypt message button clicked");
+        System.out.println("processing... this may take a moment.");
 
         String cCurrText = cEqualsResultTextField.getText();
         if (checkInt(cCurrText)) {
-            mEqualsResultTextField2.setText("processing... this may take a moment.");
             BigInteger decC = Main.model.decrypt();
             cIsNormal();
             if (checkInt(mEqualsResultTextField1.getText())) {
@@ -202,7 +193,7 @@ public class Controller {
         else {
             cNeedsToBeSelected();
         }
-        System.out.println("decrypt handled.");
+//        System.out.println("decrypt handled.");
     }
 
     private String bigIntegerToString(BigInteger decC) {
@@ -210,19 +201,19 @@ public class Controller {
         String res = null;
         res = new String(decC.toString().getBytes(), 0, decC.toString().length(), StandardCharsets.US_ASCII);
         char nextChar;
-        System.out.println("binaryA: " + binary);
+//        System.out.println("binaryA: " + binary);
         for (int i = 0; i + binary.length() < 8; i++) {
             binary = "0" + binary;
         }
-        System.out.println("binaryB: " + binary);
+//        System.out.println("binaryB: " + binary);
 
         StringBuilder decrypted = new StringBuilder();
         for(int i = 0; i <= binary.length()-8; i += 9) {
             nextChar = (char)Integer.parseInt(binary.substring(i, i+8), 2);
             decrypted.append(nextChar);
         }
-        System.out.println("bigIntegerToString: " + res);
-        System.out.println("decrypted: " + decrypted);
+//        System.out.println("bigIntegerToString: " + res);
+//        System.out.println("decrypted: " + decrypted);
         return decrypted.toString();
     }
 
@@ -243,7 +234,7 @@ public class Controller {
     }
 
     public void textChanged(KeyEvent inputMethodEvent) {
-        System.out.println("CHANGING TEXT : " + inputMethodEvent.getCharacter());
+//        System.out.println("CHANGING TEXT : " + inputMethodEvent.getCharacter());
         String enteredText = eEqualsResultTextField.getText();
         Main.model.setWorkingE(enteredText);
         boolean textIsInt = checkInt(enteredText);
@@ -263,7 +254,7 @@ public class Controller {
             error = true;
         }
         if (error) {
-            System.out.println("Value enter for \"e\" is not an integer.");
+//            System.out.println("Value enter for \"e\" is not an integer.");
             eNeedsToBeSelected();
         }
     }
