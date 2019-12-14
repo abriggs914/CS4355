@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ElGamal:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ElGamal_jar</output-path>
+    <root id="archive" name="ElGamal.jar">
+      <element id="module-output" name="ElGamal" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/View.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/Main.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/Model.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/sample.fxml" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/Controller.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/ElGamalEncryption.java" />
+    </root>
+  </artifact>
+</component>

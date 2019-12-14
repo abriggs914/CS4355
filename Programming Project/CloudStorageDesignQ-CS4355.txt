@@ -1,0 +1,40 @@
+/**
+@author Shawn Norrie 3536830
+This file was written for the final project of
+CS4355 (Cryptanalysis and database security)
+*/
+
+CS4355 Design Question
+1. Alice can encrypt all of her files F = {F1,F2,...,Fn} using AES
+individually prior to uploading her Files to the cloud server. This
+gives her n unique keys for each file in F which she can store in a
+file F*.
+2. Alice can now encrypt her file F* also using AES which allows her
+to maintain a single key for her file of keys on her local device.
+3. To produce an efficient search/return time, Alice needs to re-organize
+her files F into a balanced binary search tree based on the
+alphabetized order of the files.
+4. Alice can now upload her files F, along with her file of keys F*
+and be certain the cloud server cannot identify any of the files she
+has stored (because AES is proven to be computationally secure).
+5. If Alice wants any one of her files (in O(logn) time or less),
+she first requests her file F* containing all of her file keys (O(1)),
+then she requests her file Fi which would need to be searched as a
+balanced binary search tree, where the search time would be O(logn).
+
+
+Analysis
+The encryption and decryption time is not considered
+(as it is completed on Alice's local machine), and the time it
+would take the cloud server to return a single file is O(1).
+the processing time of the cloud server would be
+O(1 + logn) = O(logn).
+This is because the time it takes to search a balanced binary
+search tree takes O(logn).
+
+Side Note: Alice's file of keys F* can also be appended to F.
+This would result in a search time of O(logn + logn),
+O(logn) from returning the file of keys F*, and another
+O(logn) from returning the file requested, Fi.
+This means the total search time would be O(2logn) which
+is still O(logn).

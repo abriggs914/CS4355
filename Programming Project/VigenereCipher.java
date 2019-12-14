@@ -68,6 +68,9 @@ public class VigenereCipher {
 			if(vigenere.charAt(i) > 'Z' || vigenere.charAt(i) < 'A'){
 				temp.add(i);
 			}
+			else if (vigenere.charAt(i) == ' ') {
+				temp.add(i);
+			}
 			else{
 				res += Character.toString(vigenere.charAt(i));
 			}
